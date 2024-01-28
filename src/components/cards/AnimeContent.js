@@ -22,6 +22,7 @@ import ContentView from './ContentView';
 import {generateToken, getContent} from '../../services/api';
 import Loader from '../Loader';
 import ShareCard from '../ShareCard';
+import {generateRandomNumericCode} from '../getNumericCode';
 
 const AnimeContent = props => {
   const {navigation, route} = props;
@@ -39,10 +40,13 @@ const AnimeContent = props => {
    * @returns The response from the generateTokenCall function is being returned.
    */
   const generateTokenCall = async () => {
+    let params = {
+      email: `hema.saik${generateRandomNumericCode()}@yahoo.com`,
+    };
     setIsLoading(true);
-    let response = await generateToken('hema.saik@yahoo.com');
-    if (response) {
-      let getRes = await getContent(response);
+    let response = await generateToken(params);
+    if (response.status == 200) {
+      let getRes = await getContent(response?.data?.token);
       setContent(getRes.content);
       setIsLoading(false);
     } else {

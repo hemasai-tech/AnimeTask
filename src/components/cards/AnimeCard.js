@@ -14,6 +14,7 @@ import {generateToken, getContent} from '../../services/api';
 import {getCurrentFormattedDate} from '../getLiveDate';
 import ContentView from './ContentView';
 import Loader from '../Loader';
+import {generateRandomNumericCode} from '../getNumericCode';
 
 const AnimeCard = props => {
   const {navigation} = props;
@@ -25,11 +26,15 @@ const AnimeCard = props => {
    * retrieves content using the generated token.
    * @returns The response from the generateTokenCall function is being returned.
    */
+
   const generateTokenCall = async () => {
+    let params = {
+      email: `hema.saik${generateRandomNumericCode()}@yahoo.com`,
+    };
     setIsLoading(true);
-    let response = await generateToken('hema.saik@yahoo.com');
-    if (response) {
-      let getRes = await getContent(response);
+    let response = await generateToken(params);
+    if (response.status == 200) {
+      let getRes = await getContent(response?.data?.token);
       setContent(getRes.content);
       setIsLoading(false);
     } else {
@@ -72,7 +77,11 @@ const AnimeCard = props => {
   const CardContent = () => {
     return (
       <View style={styles.cardMain}>
-        <Image resizeMode="cover" src={content?.mainImage} style={styles.img} />
+        <Image
+          resizeMode="cover"
+          source={{uri: content?.mainImage}}
+          style={styles.img}
+        />
         <ContentView content={content} onRefreshClick={generateTokenCall} />
       </View>
     );

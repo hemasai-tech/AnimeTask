@@ -8,10 +8,7 @@ export const url = {
 };
 
 // Function to generate a token
-export const generateToken = async email => {
-  let params = {
-    email: email,
-  };
+export const generateToken = async params => {
   try {
     const response = await axios.post(url.generateToken, params, {
       headers: {
@@ -19,11 +16,10 @@ export const generateToken = async email => {
         Accept: '*/*',
       },
     });
-
-    return response.data.token; // Assuming the token is in the response data
+    return response; // Assuming the token is in the response data
   } catch (error) {
     // Handle errors
-    console.error('Error generating token:', error);
+    console.log('Error generating token:', error);
     throw error;
   }
 };
@@ -43,7 +39,6 @@ export const getContent = async token => {
     return response.data;
   } catch (error) {
     // Handle errors
-    console.error('Error getting content:', error);
-    throw error;
+    return error
   }
 };
