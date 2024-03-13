@@ -1,10 +1,8 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-
-import AntDesign from 'react-native-vector-icons/AntDesign';
+import { View, Text, StyleSheet } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const ShareCard = () => {
+const ShareCard: React.FC = () => {
   return (
     <View style={styles.shareView}>
       <View style={styles.shareBtn}>

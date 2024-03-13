@@ -1,10 +1,8 @@
-// ContentView.js
 import React from 'react';
 import {View, Text, Image, StyleSheet} from 'react-native';
-import ButtonComp from './ButtonComp';
-import Loader from '../Loader';
+import ButtonComp from './ButtonComp';import { IContentViewProps } from '../../../modals/types';
 
-const ContentView = ({content, onRefreshClick, loading}) => {
+const ContentView: React.FC<IContentViewProps> = ({content, onRefreshClick, loading}) => {
   return (
     <View style={styles.contentView}>
       <View style={styles.capView}>

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -7,15 +7,10 @@ import {
   Dimensions,
   TouchableOpacity,
   ScrollView,
-  Image,
   useWindowDimensions,
+  Platform,
 } from 'react-native';
-import RenderHTML from 'react-native-render-html';
-
-import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
-import ButtonComp from './ButtonComp';
 import Footer from './Footer';
 import DetailsView from './DetailsView';
 import ContentView from './ContentView';
@@ -23,9 +18,9 @@ import {generateToken, getContent} from '../../services/api';
 import Loader from '../Loader';
 import ShareCard from '../ShareCard';
 import {generateRandomNumericCode} from '../getNumericCode';
+import { IAnimeContentProps } from '../../../modals/types';
 
-const AnimeContent = props => {
-  const {navigation, route} = props;
+const AnimeContent:React.FC<IAnimeContentProps> = ({navigation, route}) => {
   const {
     params: {contentLoad},
   } = route;

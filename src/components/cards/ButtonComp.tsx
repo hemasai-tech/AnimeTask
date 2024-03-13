@@ -1,8 +1,8 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import { IButtonCompProps } from '../../../modals/types';
 
-const ButtonComp = props => {
-  const {onRefreshClick} = props;
+const ButtonComp:React.FC<IButtonCompProps> = ({onRefreshClick}) => {
   return (
     <View>
       <TouchableOpacity onPress={onRefreshClick} style={styles.btnView}>

@@ -1,8 +1,9 @@
 import React from 'react';
 import {View, Image, Text, StyleSheet} from 'react-native';
 import ButtonComp from './ButtonComp';
+import { IFooterProps } from '../../../modals/types';
 
-const Footer = ({content, onRefreshClick}) => {
+const Footer:React.FC<IFooterProps> = ({content, onRefreshClick}) => {
   return (
     <View style={styles.footView}>
       <View>

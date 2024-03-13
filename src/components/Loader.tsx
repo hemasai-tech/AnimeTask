@@ -1,7 +1,7 @@
 import React from 'react';
-import {View, Text, ActivityIndicator, StyleSheet} from 'react-native';
+import {View, ActivityIndicator, StyleSheet} from 'react-native';
 
-const Loader = () => {
+const Loader:React.FC = () => {
   return (
     <View style={styles.loader}>
       <ActivityIndicator size={'large'} />

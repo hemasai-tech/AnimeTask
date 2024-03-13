@@ -1,8 +1,9 @@
 import React from 'react';
 import {View} from 'react-native';
 import RenderHTML from 'react-native-render-html';
+import { IDetailsViewProps } from '../../../modals/types';
 
-const DetailsView = ({content, width}) => {
+const DetailsView:React.FC<IDetailsViewProps> = ({content, width}) => {
   return (
     <View>
       {content.text && (
