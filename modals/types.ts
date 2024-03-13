@@ -9,6 +9,11 @@ export type IPropsAnimeCard = {
   navigation: NavigationProp<any>; // Adjust this type according to your navigation library
 };
 
+export type RootStackParamList = {
+  AnimeCard: undefined;
+  AnimeContent: IAnimeContentProps;
+};
+
 export interface IPropsContent {
   logo: string;
   title?: string;
